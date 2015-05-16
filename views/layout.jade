@@ -1,0 +1,19 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset="utf-8")
+        title Untitled
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+        link(rel="stylesheet" href="/main.css")
+
+    body
+        header.main-header
+            .container
+                a(href="/") 
+                    img.beer-icon(src="/images/beer-icon.png")
+                    h1 BREWSR
+        .container.content
+            block content
+            
+        script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+        script(src="/main.js")
