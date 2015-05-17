@@ -1,11 +1,11 @@
  ☐ Spec out data model(s) needed for project -- users, breweries(?)
- ☐ Location info on load / sessions 
+ ☐ Location info on load / user sessions/tokens 
  ☐ database, user authentication with passport
  ☐ user stories: returning visitor, new visitor
  ☐ all features, minimum viable product and also glamour features
  ☐ investigate beer mapping project api
  ☐ decide what libraries and platforms are needed for the project
- ☐ investigate twitter/facebook/social APIs to search for terms about new beers, perhaps even untappd api to provide ratings?
+ ☐ investigate twitter/facebook/social APIs to search for terms about new beers, perhaps even untappd api to provide ratings (perhaps not necessary due to them, sometimes, being new beers)?
  ☐ Wireframe out screens and user flows
  ☐ design: font, colors, layout
  ☐ Feature List
@@ -14,4 +14,4 @@
  ☐ What confirm/alert messages are needed?
  ☐ how will the data perform based on inputs?
  ☐ geolocation, user zip entry, and also radius choice to perform the query. initial page load will show entire state or US?
- ☐ 
+ ☐ perhaps mapping with google maps api
