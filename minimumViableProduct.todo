@@ -1,0 +1,12 @@
+- constantly updating info flow with info pulled from twitter, facebook, google maps, untappd
+  - info provided to user: new tappings, upcoming events, specials
+- geolocation of user 
+- zip code entry for user to see places in a different location
+- ability to create account for user to have persistent settings
+- log-in authentication/account creation, perhaps with Digits
+- Tutorial Splash page
+- extremely clean and simple UI/UX
+
+
+Glamour Features: 
+  - Mobile experience/app using Famous
