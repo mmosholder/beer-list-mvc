@@ -1,4 +1,28 @@
 extends layout
 
 block content
-    
+    if error
+        h3= error
+
+    p: button(type="button" data-toggle="modal" data-target="#add-user-modal").btn.btn-primary Create an account
+
+    p: button(type="button" data-toggle="modal" data-target="#log-in").btn.btn-primary Log In
+
+    p: a(href="/auth/logout") Log Out
+
+    .row
+        form(ngSubmit="newLocation()", method="post").col-sm-offset-4.col-sm-4.row
+            .form-group
+                input#location.form-control(type="text" name="location" placeholder="Your Location")
+            input(type="submit").location-submit        
+
+    .item-container
+        for tweet in tweets 
+            .single-item.row
+                img(src='#{tweet.profilePhoto}').col-sm-1
+                .col-sm-11
+                    h4 @#{tweet.name}
+                    p #{tweet.text}
+
+    include partials/addUser
+    include partials/login

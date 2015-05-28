@@ -17,7 +17,7 @@ var authenticationController = {
 
     // route-handler for the /auth/login route. meant to be a page that only shows login forms
     login: function (req, res) {
-        res.render('/partials/login', {
+        res.render('login', {
             error: req.flash('error')
         });
     },
@@ -52,7 +52,7 @@ var authenticationController = {
         // regardless of how the data is sent (post, get).
         var user = new User ({
             name: req.body.name,
-            username: req.body.username,
+            userName: req.body.userName,
             email: req.body.email,
             password: req.body.password,
             location: req.body.location
@@ -66,7 +66,6 @@ var authenticationController = {
                 if(err.code === 11000) {
                     errorMessage = 'This user already exists';
                 }
-
                 req.flash('error', errorMessage);
                 return res.redirect('/auth/login');
             }
@@ -79,7 +78,7 @@ var authenticationController = {
     logout: function (req, res) {
         req.logout();
 
-        res.redirect('/auth/login');
+        res.redirect('/');
     }
 };
 

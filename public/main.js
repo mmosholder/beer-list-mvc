@@ -8,3 +8,8 @@ beerApp.config(function ($routeProvider){
     });
 });
 
+beerApp.controller('addUserController', function ($scope) {
+    $scope.addUser = function () {
+    }
+})
+

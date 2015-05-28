@@ -8,7 +8,10 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 
 // Flash to store one-time messages between views
-var flash = require('passport');
+var flash = require('connect-flash');
+
+// load in base passport library
+var passport = require('passport');
 
 // Load in passport config
 var passportConfig = require('./config/passport');
@@ -16,6 +19,7 @@ var passportConfig = require('./config/passport');
 //Pull in Controllers
 var indexController = require('./controllers/index.js');
 var authenticationController = require('./controllers/authentication');
+var apiController = require('./controllers/api');
 
 // Connect to DB
 mongoose.connect('mongodb://localhost/beer-project');
@@ -58,6 +62,8 @@ app.get('/auth/logout', authenticationController.logout);
 
 // get request for index before ensureAuthenticated since all visitors can see index, not just logged in users
 app.get('/', indexController.index);
+
+app.get('/signup', indexController.signup);
 
 // ***** IMPORTANT ***** //
 // By including this middleware (defined in our config/passport.js module.exports),

@@ -13,6 +13,7 @@
  ☐ geolocation on load, user zip entry, and also radius choice to perform the query. initial page load will show entire state or US?
  ☐ Find admire sites/transitions/colors/fonts/apps
  ☐ Use locatoins like a weather app
+ ☐ sockets/set interval for auto updates
 
  Start with User Authentication
  Get in data

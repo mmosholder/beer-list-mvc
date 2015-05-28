@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    form(action="/auth/signup", method="post")
+        .form-group
+            input#name.form-control(type="text" name="name" placeholder="Your Name")
+        .form-group
+            input#location.form-control(type="text" name="location" placeholder="Your Location")        
+        .form-group
+            input#user-name.form-control(type="text" name="username" placeholder="User Name") 
+        .form-group
+            input#password.form-control(type="password" name="password" placeholder="Choose a Password")
+        input.btn.btn-primary(type="submit")  
