@@ -5,18 +5,30 @@ body {
     color: #333;
 }
 .main-header {
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
     box-shadow: 1px 3px 5px #aaa;
-    background-image: url('/images/keg-header-bg.jpg');
+    background-image: url('/images/kegs.png');
     background-size: cover;
-    height: 80px;
+    height: 500px;
 }
-.main-header .logo {
+.header-container {
     background-color: rgba(123, 252, 207, .8);
+    margin-top: 10px;
     padding: 5px;
-    margin: 10px 0 0 0;
+    color: #333;
+    line-height: 35px;
 }
-.main-header h1 {
+.header-container ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.header-container li {
+    display: inline-block;
+    width: 19%;
+    vertical-align: middle;
+}
+.header-container h1 {
     padding: 5px;
     margin: 0;
     font-family: 'Dosis', sans-serif;
@@ -32,28 +44,28 @@ body {
 .beer-icon {
     width: 30px;
     margin-top: -20px;
-}
-.account-text {
-    font-size: 18px;
-    float: right;
-    padding: 5px;
-    margin-top: 25px;
-    background-color: rgba(123, 252, 207, .8);
-    color: #333;
     display: inline-block;
 }
-.account-text .fa {
+.header-container .fa {
     padding: 0 5px;
+    width: 30px;
+    font-size: 25px;
+    vertical-align: middle;
 }
-.account-text a {
+.header-container button,
+.header-container a {
     color: #333;
     font-size: 20px;
     font-weight: 700;
+    padding: 0;
 }
 
 /************************************
 Content Classes
 **************************************/
+.form-row {
+    margin-top: -250px;
+}
 #templates,
 #checklist-item {
     display: none;

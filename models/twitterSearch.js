@@ -1,5 +1,7 @@
 var Twitter = require('twitter');
 var _ = require('underscore');
+var geocoder = require('simple-geocoder');
+
 
 var keys;
 if(process.env.API_KEY){
@@ -21,11 +23,22 @@ var client = new Twitter({
 });
 
 var newFeed = function (location, onComplete) {
-    client.get('search/tweets', {q: 'beer', geocode: '40.015638,-105.270233,70mi', result_type: 'recent', count: '30'}, function(error, tweets, response){
-        var newTweets = _.map(tweets.statuses, function (item) {
-            return ({text: item.text, name: item.user.screen_name, profilePhoto: item.user.profile_image_url});
+    geocoder.geocode(location, function (success, locations) {
+        var location = locations.y + ',' + locations.x + ',20mi';
+        client.get('search/tweets', {
+            q: 'beer OR brewery', 
+            geocode: location, 
+            result_type: 'recent'
+        }, function(error, tweets, response){
+            if(!tweets) {
+                console.log('No results found');
+            } else {
+                var newTweets = _.map(tweets.statuses, function (item) {
+                    return ({text: item.text, name: item.user.screen_name, profilePhoto: item.user.profile_image_url});        
+                });
+                onComplete(newTweets);
+            }
         });
-        onComplete(newTweets);
     });
 };
  

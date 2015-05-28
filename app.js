@@ -16,6 +16,7 @@ var passport = require('passport');
 // Load in passport config
 var passportConfig = require('./config/passport');
 
+
 //Pull in Controllers
 var indexController = require('./controllers/index.js');
 var authenticationController = require('./controllers/authentication');
@@ -63,7 +64,12 @@ app.get('/auth/logout', authenticationController.logout);
 // get request for index before ensureAuthenticated since all visitors can see index, not just logged in users
 app.get('/', indexController.index);
 
+app.get('/api/getTweets', apiController.twitterFeed);
+
+app.get('/template/:templateName', indexController.templates);
+
 app.get('/signup', indexController.signup);
+
 
 // ***** IMPORTANT ***** //
 // By including this middleware (defined in our config/passport.js module.exports),

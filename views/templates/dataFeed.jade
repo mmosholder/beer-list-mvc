@@ -1,0 +1,5 @@
+.single-item.row(ng-repeat="tweet in feed")
+    img(ng-src='{{tweet.profilePhoto}}').col-sm-1
+    .col-sm-11
+        h4 {{tweet.name}}
+        p {{tweet.text}}

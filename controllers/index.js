@@ -2,9 +2,7 @@ var newFeed = require('../models/twitterSearch');
 
 var indexController = {
 	index: function(req, res) {
-		newFeed(null, function (tweets) {
-            res.render('index', {tweets: tweets});
-        })
+        res.render('index');
 	}, 
 
     login: function (req, res) {
@@ -13,6 +11,10 @@ var indexController = {
 
     signup: function (req, res) {
         res.render('signup');
+    },
+
+    templates: function (req, res) {
+        res.render('templates/' + req.params.templateName);
     }
 };
 

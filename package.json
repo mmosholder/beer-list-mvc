@@ -7,10 +7,12 @@
     "cookie-parser": "^1.3.5",
     "express": "^4",
     "express-session": "^1.11.2",
+    "geocodio": "^2.0.0",
     "jade": "^1",
     "mongoose": "^4.0.3",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
+    "simple-geocoder": "^0.1.1",
     "twitter": "^1.2.5",
     "underscore": "^1.8.3"
   }
