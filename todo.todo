@@ -14,7 +14,11 @@
  ☐ Find admire sites/transitions/colors/fonts/apps
  ☐ Use locatoins like a weather app
  ☐ sockets/set interval for auto updates
- ☐ geocordinates
+ ☐ style modals
+ ☐ famo.us transitions for rendering twitter lists
+ ☐ return 'Sorry, no results at this time' for empty search
+ ☐ when first search is performed, slide search bar to top and make box go away
+ ☐ Hide Insta and FB keys in private.js
 
  Start with User Authentication
  Get in data

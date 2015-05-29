@@ -3,18 +3,18 @@ extends layout
 block content
     if error
         h3= error
-
-    .row.form-row
-        form(ng-submit="newLocation()", method="get").col-sm-offset-4.col-sm-4.row
-            .form-group
-                input#location.form-control(type="text" ng-model="newFeed.location" placeholder="Your Location")
-            input(type="submit").location-submit        
+    .hero
+        h2.text-center Brewsr finds new beers and events at breweries and bars near you
+        .row.form-row
+            form(ng-submit="newLocation()", method="get").col-sm-offset-3.col-sm-6.row
+                .form-group
+                    input#location.form-control.text-center(type="text" ng-model="newFeed.location" placeholder="Search a City, State or ZIP (ex. Denver, CO or 15557)")
+                input(type="submit").location-submit        
 
     .item-container
         .single-item.row(ng-repeat="tweet in feed")
             img(ng-src='{{tweet.profilePhoto}}').col-sm-1
             .col-sm-11
-                h4 {{tweet.name}}
+                h4 @{{tweet.name}}
                 p {{tweet.text}}
-
 
