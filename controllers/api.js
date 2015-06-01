@@ -15,7 +15,16 @@ var apiController = {
             // perform next level function on results before sending
             res.send({results: results});
         });
-    }     
+    }
+    // fbPosts: function (req, res) {
+    //     newFeed.fbPosts(req.query.location, function (err, posts) {
+    //         if (err) {
+    //             console.log(ere);
+    //             return res.status(500);
+    //         }
+    //         res.send({posts: posts});
+    //     });
+    // }     
 };
 
 module.exports = apiController;

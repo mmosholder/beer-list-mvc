@@ -24,10 +24,18 @@ var client = new Twitter({
   access_token_secret: keys.access_token_secret
 });
 
-Instagram.set('client_id', '1cafdff61691495b9dd4bada3a632fb8');
-Instagram.set('client_secret', '7cb425c5de864fd386157d00c6440456');
+// Instagram.set('client_id', '1cafdff61691495b9dd4bada3a632fb8');
+// Instagram.set('client_secret', '7cb425c5de864fd386157d00c6440456');
+
+// Instagram.media.search({ lat: 39.727646, lng: -104.978364, radius: 2 }, function (err, results) {
+//     _.mapObject(results, function (item) {
+//         console.log(item.tags);
+//     });
+// });
+
 
 graph.setAccessToken('1006080399410781|_iwF0gK2imuX5hy_FjcpE_vdGrs');
+
 
 var fbIds = function (location, onComplete) {
     geocoder.geocode(location, function (success, locations) {
@@ -54,17 +62,75 @@ var fbIds = function (location, onComplete) {
         });
     });
 };
+var tempArr = [ '664336970267447',
+  '812884302128614',
+  '456826637744688',
+  '648088811907693',
+  '108522995838678',
+  '903747199690074',
+  '163657470329111',
+  '244557235559933',
+  '122762945301',
+  '121599011184103',
+  '29328243280',
+  '194134343972747',
+  '65369839606',
+  '1410136072540723',
+  '311175085620387',
+  '333953550083819',
+  '389580281103276',
+  '305105296227231',
+  '249629245146716',
+  '166236386843129',
+  '418945814818065',
+  '540396426095938',
+  '115418858481050',
+  '324959077608458',
+  '374699879241803',
+  '226650704123922',
+  '192179307584157',
+  '234143733369314',
+  '435621476481753',
+  '399696610085099',
+  '237687729624109',
+  '170790099616701',
+  '389919111156739',
+  '226544004042297' ];
 
 var fbPosts = function (arr, onComplete) {
-
+    _.map(arr, function (item) {
+        var params = item + '?fields=posts.limit(10){message}';
+        
+        graph.get(params, function (err, posts) {
+            if (err) onComplete(err);
+            var newPosts = _.pluck(posts, 'data');
+            var messages = function (err, posts) {
+                if (err) return onComplete(err);
+                var postIdArr = _.map(posts, function (item) {
+                    var itemMap = _.map(item, function (newItem) {
+                        var searchParams = newItem.id + '?fields=message,link,picture';
+                        graph.get(searchParams, function (err, messages) {
+                            return ({message: messages.message, photoUrl: messages.picture, link: messages.link});
+                        });
+                    });
+                    onComplete(itemMap);
+                });
+                onComplete(null, postIdArr);
+            };
+            messages(null, newPosts);
+        });
+    });
 };
+
+fbPosts(tempArr, function (err, results) {
+    // console.log(results);
+});
 
 var newFeed = function (location, onComplete) {
     geocoder.geocode(location, function (success, locations) {
         var location = locations.y + ',' + locations.x + ',20mi';
-        // Instagram.media.search({ lat: 39.727646, lng: -104.978364, radius: 10 });
         client.get('search/tweets', {
-            q: 'brew', 
+            q: 'beer', 
             geocode: location, 
             result_type: 'recent'
         }, function(error, tweets, response){
@@ -83,5 +149,6 @@ var newFeed = function (location, onComplete) {
 
 module.exports = {
     newFeed: newFeed,
-    fbItems: fbIds
+    fbItems: fbIds,
+    fbPosts: fbPosts
 };

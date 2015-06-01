@@ -13,10 +13,10 @@ beerApp.controller('dataController', function ($scope, $http) {
             console.log(data);
             $scope.feed = data.tweets;
         });
-        $http.get('/api/getFbFeed', {params: {location: $scope.newFeed.location}}).success(function (data) {
-            console.log(data);
-            $scope.feed = data.results;
-        });
+        // $http.get('/api/getFbFeed', {params: {location: $scope.newFeed.location}}).success(function (data) {
+        //     console.log(data);
+        //     $scope.feed = data.results;
+        // });
     };
 });
 

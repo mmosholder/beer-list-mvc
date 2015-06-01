@@ -68,6 +68,8 @@ app.get('/api/getTweets', apiController.twitterFeed);
 
 app.get('/api/getFbFeed', apiController.fbFeed);
 
+// app.get('/api/getFbPosts', apiController.fbPosts);
+
 app.get('/template/:templateName', indexController.templates);
 
 app.get('/signup', indexController.signup);
