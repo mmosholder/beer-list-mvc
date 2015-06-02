@@ -4,6 +4,7 @@ var geocoder = require('simple-geocoder');
 var Instagram = require('instagram-node-lib');
 var graph = require('fbgraph');
 var async = require('async');
+var Q = require('q');
 
 var keys;
 if(process.env.API_KEY){
@@ -24,14 +25,17 @@ var client = new Twitter({
   access_token_secret: keys.access_token_secret
 });
 
-// Instagram.set('client_id', '1cafdff61691495b9dd4bada3a632fb8');
-// Instagram.set('client_secret', '7cb425c5de864fd386157d00c6440456');
+Instagram.set('client_id', '1cafdff61691495b9dd4bada3a632fb8');
+Instagram.set('client_secret', '7cb425c5de864fd386157d00c6440456');
 
-// Instagram.media.search({ lat: 39.727646, lng: -104.978364, radius: 2 }, function (err, results) {
-//     _.mapObject(results, function (item) {
-//         console.log(item.tags);
-//     });
-// });
+Instagram.locations.search({ lat: 39.727646, lng: -104.978364, radius: 2 }, function (err, results) {
+    // _.map(results, function (item) {
+    //     var caption = _.pluck(item, 'caption');
+    //     console.log(caption);
+    // });
+    console.log(results);
+
+});
 
 
 graph.setAccessToken('1006080399410781|_iwF0gK2imuX5hy_FjcpE_vdGrs');
@@ -62,7 +66,8 @@ var fbIds = function (location, onComplete) {
         });
     });
 };
-var tempArr = [ '664336970267447',
+
+var idArr = [ '664336970267447',
   '812884302128614',
   '456826637744688',
   '648088811907693',
@@ -98,47 +103,72 @@ var tempArr = [ '664336970267447',
   '226544004042297' ];
 
 var fbPosts = function (arr, onComplete) {
-    _.map(arr, function (item) {
-        var params = item + '?fields=posts.limit(10){message}';
-        
-        graph.get(params, function (err, posts) {
-            if (err) onComplete(err);
-            var newPosts = _.pluck(posts, 'data');
-            var messages = function (err, posts) {
+    var tempArr = [];
+    var postsData = function (arr) {
+        for (var i = 0; i < arr.length; i++) {
+            var params = arr[i] + '?fields=posts.limit(10){message}';
+            graph.get(params, function (err, posts) {
                 if (err) return onComplete(err);
-                var postIdArr = _.map(posts, function (item) {
-                    var itemMap = _.map(item, function (newItem) {
-                        var searchParams = newItem.id + '?fields=message,link,picture';
-                        graph.get(searchParams, function (err, messages) {
-                            return ({message: messages.message, photoUrl: messages.picture, link: messages.link});
-                        });
-                    });
-                    onComplete(itemMap);
-                });
-                onComplete(null, postIdArr);
-            };
-            messages(null, newPosts);
-        });
-    });
+                var newPosts = _.pluck(posts, 'data');
+
+                tempArr = tempArr.concat(newPosts);
+            });
+        }
+        console.log(tempArr);
+    };
+    onComplete(postsData(arr));
+    // var postMessages = function (err, postsData) {
+    //     if (err) return onComplete(err);
+    //     var postIdArr = function (postsData) {
+    //         for (var i = 0; i < postsData; i++) {
+    //             console.log(postsData[i]);
+    //         }
+    //     }
+    // }
+
+    // _.map(arr, function (item) {
+    //     var params = item + '?fields=posts.limit(10){message}';
+    //     graph.get(params, function (err, posts) {
+    //         if (err) onComplete(err);
+    //         var newPosts = _.pluck(posts, 'data');
+    //         var messages = function (err, posts) {
+    //             if (err) return onComplete(err);
+    //             var postIdArr = _.map(posts, function (item) {
+    //                 var itemMap = _.map(item, function (newItem) {
+    //                     var searchParams = newItem.id + '?fields=message,link,picture';
+    //                     graph.get(searchParams, function (err, messages) {
+    //                         emptyArr.push({message: messages.message, photoUrl: messages.picture, link: messages.link});
+    //                         return emptyArr;
+    //                     });
+    //                 });
+    //                 onComplete(itemMap);
+    //             });
+    //             onComplete(postIdArr);
+    //         };
+    //         messages(null, newPosts);
+    //     });
+    // });
 };
 
-fbPosts(tempArr, function (err, results) {
-    // console.log(results);
-});
+// fbPosts(idArr, function (err, results) {
+//     // console.log(results);
+// });
 
 var newFeed = function (location, onComplete) {
     geocoder.geocode(location, function (success, locations) {
         var location = locations.y + ',' + locations.x + ',20mi';
         client.get('search/tweets', {
-            q: 'beer', 
+            q: '"new beer" OR "just tapped" OR "on tap" OR "beer specials" -Untappd', 
             geocode: location, 
-            result_type: 'recent'
+            result_type: 'recent',
+            count: 30
         }, function(error, tweets, response){
+            console.log(tweets);
             if(tweets.length) {
                 console.log('No results found');
             } else {
                 var newTweets = _.map(tweets.statuses, function (item) {
-                    return ({text: item.text, name: item.user.screen_name, profilePhoto: item.user.profile_image_url});        
+                    return ({text: item.text, name: item.user.screen_name, time: item.created_at, profilePhoto: item.user.profile_image_url});        
                 });
                 onComplete(newTweets);
             }

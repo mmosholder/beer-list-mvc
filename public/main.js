@@ -1,4 +1,4 @@
-var beerApp = angular.module('beerApp', ['ngResource', 'ngRoute', 'ui.router']);
+var beerApp = angular.module('beerApp', ['ngResource', 'ngRoute', 'ui.router', 'ngAnimate']);
 
 beerApp.config(function ($routeProvider){
   $routeProvider
@@ -18,6 +18,17 @@ beerApp.controller('dataController', function ($scope, $http) {
         //     $scope.feed = data.results;
         // });
     };
+
+    $scope.secondarySearchForm = false;
+    $scope.initialSearch = true;
+    $scope.initialLoadContent = true;
+
+    $scope.secondarySearch = function () {
+        $scope.initialSearch = !$scope.initialSearch;
+        $scope.secondarySearchForm = !$scope.secondarySearchForm;
+        $scope.initialLoadContent = !$scope.initialLoadContent;
+    };
+
 });
 
 

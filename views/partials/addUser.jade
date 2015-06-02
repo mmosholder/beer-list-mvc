@@ -3,9 +3,10 @@
         .modal-content
             .modal-header
                 button.close(data-dismiss="modal") &times;
+                i.fa.fa-plus
                 h3.modal-title Create an account
             .modal-body
-                p You don't need an account to use Brewsr, but you might want one so your favorite locations appear at the top of the list
+                p You don't need an account to use Brewsr, but you might want one so your favorite searches are saved.
                 form(action="/auth/signup", method="post")
                     .form-group
                         input#name.form-control(type="text" name="name" placeholder="Your Name")
@@ -17,5 +18,5 @@
                         input#user-name.form-control(type="text" name="userName" placeholder="User Name") 
                     .form-group
                         input#password.form-control(type="password" name="password" placeholder="Choose a Password")
-                    input.btn.btn-primary(type="submit")           
+                    input.btn.btn-primary.modal-submit(type="submit")           
             

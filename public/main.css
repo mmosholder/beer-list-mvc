@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Dosis:700);
-@import url(http://fonts.googleapis.com/css?family=PT+Sans:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Oxygen:300,400,700);
 body {
-    font-family: 'PT Sans', sans-serif;
+    font-family: 'Oxygen', sans-serif;
     color: #333;
 }
 .main-header {
@@ -14,22 +14,31 @@ body {
 .header-container {
     background-color: rgba(123, 252, 207, .7);
     margin-top: 10px;
-    padding: 5px;
     color: #333;
-    line-height: 35px;
+    padding: 0;
+    border-radius: 0;
+    min-height: 50px;
 }
 .header-container ul {
     list-style: none;
     padding-left: 0;
     margin: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    width: 100%;
 }
 .header-container li {
-    display: inline-block;
-    width: 33%;
-    vertical-align: middle;
+    display: block;
+    width: 33.33%;
+}
+.nav>li>a:hover {
+    background-color: rgba(123, 252, 207, 1);
+    color: #666;
+}
+.header-container li:hover a {
+    color: #666;
 }
 .header-container h1 {
-    padding: 5px;
     margin: 0;
     font-family: 'Dosis', sans-serif;
     margin-top: 0;
@@ -37,14 +46,20 @@ body {
     display: inline-block;
     -webkit-font-smoothing: antialiased;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    letter-spacing: 2px;
+    vertical-align: middle;
+    font-size: 45px;
 }
 .logo {
     display: inline-block;
 }
+.logo a {
+    display: block;
+}
 .beer-icon {
     width: 30px;
-    margin-top: -20px;
     display: inline-block;
+    margin: 0 5px;
 }
 .header-container .fa {
     padding: 0 5px;
@@ -52,29 +67,164 @@ body {
     font-size: 25px;
     vertical-align: middle;
 }
-.header-container button,
-.header-container a {
+.header-container li > a {
     color: #333;
     font-size: 20px;
     font-weight: 700;
     padding: 0;
+    display: block;
+    line-height: 55px;
 }
-
 /************************************
 Content Classes
 **************************************/
+
+/************************************
+Form Show/Hide 
+************************************/
+
+.animate-show.ng-hide-add {
+  -webkit-animation:0.1s hide;
+  animation:0.1s hide;
+}
+
+@keyframes hide {
+  0% {
+    opacity:1;
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.02);
+  }
+  100% { 
+    opacity:0;
+    transform: scale(0.5);
+  }
+}
+
+@-webkit-keyframes hide {
+  0% {
+    opacity:1;
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.02);
+  }
+  100% { 
+    opacity:0;
+    transform: scale(0.5);
+  }
+}
+
+
+.animate-show.ng-hide-remove {
+  -webkit-animation:0.8s show;
+  animation:0.8s show;
+}
+
+@keyframes show {
+  0% {
+    opacity:0;
+    transform: scale(0.5);
+  }
+  70% {
+    transform: scale(1.02);
+  }
+  100% { 
+    opacity:1;
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes show {
+  0% {
+    opacity:0;
+    transform: scale(0.5);
+  }
+  70% {
+    transform: scale(1.02);
+  }
+  100% { 
+    opacity:1;
+    transform: scale(1);
+  }
+}
+.single-item.ng-move,
+.single-item.ng-enter,
+.single-item.ng-leave {
+  -webkit-transition:all linear 0.4s;
+  transition:all linear 0.4s;
+}
+
+.single-item.ng-leave.ng-leave-active,
+.single-item.ng-move,
+.single-item.ng-enter {
+  opacity:0;
+}
+
+.single-item.ng-leave,
+.single-item.ng-move.ng-move-active,
+.single-item.ng-enter.ng-enter-active {
+  opacity:1;
+}
+/*******************************
+End Form/Show Hide
+*******************************/
+
+/******************************
+Modal Styles
+******************************/
+.modal-dialog {
+    width: 400px;
+}
+#add-user-modal .modal-content,
+#log-in .modal-content {
+    border-radius: 0;
+}
+#add-user-modal .form-group,
+#log-in .form-group {
+    padding: 5px 0;
+}
+#add-user-modal input,
+#log-in input {
+    padding: 5px;
+    border-radius: 0;
+}
+.modal-header {
+    text-align: center;
+    background-color: rgba(123, 252, 207, 1);
+}
+.modal-header i, 
+.modal-header h3 {
+    display: inline-block;
+}
+.modal-header i {
+    font-size: 25px;
+    padding: 5px;
+}
+.form-container {
+    height: 87%;
+}
+.secondary-search {
+    margin-top: 30px;
+}
 .content {
-    margin-top: -420px;
     padding: 0;
+    margin-bottom: 20px;
 }
 .hero {
     padding: 10px 70px 70px 70px;
-/*    border: 8px solid #eee;
-*/}
-.hero h2 {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.white-text {
     text-shadow: 1px 3px 3px #333;
     color: #eee;
-    margin-bottom: 40px;
+    margin-top: 0;
+}
+.hero .white-text {
+    margin: 20px 0 40px 0;
 }
 #location {
     border-radius: 0;
@@ -98,6 +248,11 @@ Content Classes
     margin-top: 20px;
     padding-left: 0;
     box-shadow: 1px 1px 3px #999;
+    position: absolute;
+    top: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1170px;
 }
 .single-item.row {
     margin-left: 0;
@@ -106,23 +261,20 @@ Content Classes
 .single-item {
     padding: 5px 10px;
     border-bottom: 1px solid #ddd;
-    background-color: rgba(250,250,250,.9);
+    background-color: rgba(250,250,250,.95);
 }
-.checkbox-container {
-    background-color: rgba(250,250,250,.9);
-    box-shadow: 1px 1px 3px #ccc;
-    padding: 10px;
+
+.form-group {
+    margin-bottom: 0;
 }
-.checkbox {
-    margin: 5px 0 5px 40px;
-}
-.location-submit {
+.location-submit,
+.new-location-submit,
+.modal-submit {
     margin: 15px 0;
     border-radius: 0;
     display: block;
     border: none;
-    width: 100%;
-    padding: 6px;
+    height: 34px;
     background-color: #736FFE;
     text-transform: uppercase;
     color: #fff;
@@ -130,8 +282,25 @@ Content Classes
     font-size: 18px;
     letter-spacing: 2px;
 }
+.location-submit:hover,
+.new-location-submit:hover,
+.modal-submit:hover {
+    background-color: #3836bc;
+}
+.modal-submit {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+}
+.new-location-submit {
+    margin: 0 0 0 -20px;
+}
 .form-btn:hover {
     background: #0998E5;
+}
+.info-container h3 {
+    display: inline-block;
+    border-bottom: 3px solid #333;
 }
 .edit-favorites {
     display: none;
@@ -180,7 +349,4 @@ Content Classes
 }
 .updates {
     float: right;
-}
-.content {
-    margin-bottom: 20px;
 }

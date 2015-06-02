@@ -19,6 +19,12 @@
  ☐ return 'Sorry, no results at this time' for empty search
  ☐ when first search is performed, slide search bar to top and make box go away
  ☐ Hide Insta and FB keys in private.js
+ ☐ mobile styling
+ ☐ ease in initial form on page load
+ ☐ format Date
+ ☐ info boxes on load
+ ☐ info boxes disappear on submittal
+ ☐ 
 
  Start with User Authentication
  Get in data

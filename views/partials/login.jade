@@ -3,11 +3,12 @@
         .modal-content
             .modal-header
                 button.close(data-dismiss="modal") &times;
-                h3.modal-title Log-In
+                i.fa.fa-bolt
+                h3.modal-title Log In
             .modal-body
                 form(action="/auth/login", method="post")
                     .form-group
                         input.form-control(type="text", name="username", placeholder="Username")
                     .form-group
                         input.form-control(type="password", name="password", placeholder="Password")
-                    input.btn.btn-primary(type="submit")
+                    input.modal-submit(type="submit" value="Login")
