@@ -393,3 +393,14 @@ Modal Styles
 .venn-beers {
     width: 400px;
 }
+.how {
+    margin-top: 40px;
+}
+.how h2 {
+    font-family: 'Oxygen', sans-serif;
+    text-transform: none;
+    display: block;
+}
+.how img {
+    width: 400px;
+}

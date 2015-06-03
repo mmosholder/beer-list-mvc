@@ -9,7 +9,7 @@
 }
 
 /* Small Devices, Tablets */
-@media (max-width : 768px){
+@media (max-width : 767px){
     .main-header {
         height: 320px;
     }
