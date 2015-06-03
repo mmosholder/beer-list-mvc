@@ -12,7 +12,9 @@ if(process.env.API_KEY){
         consumer_secret: process.env.CONSUMER_SECRET,
         access_token: process.env.ACCESS_TOKEN_KEY,
         access_token_secret: process.env.ACCESS_TOKEN_SECRET,
-        graph_access_token: process.env.GRAPH_ACCESS_TOKEN
+        graph_access_token: process.env.GRAPH_ACCESS_TOKEN,
+        ig_client_id: process.env.IG_CLIENT_ID,
+        ig_client_secret: process.env.IG_CLIENT_SECRET
     };
 } else {
     var keys = require('../private.js');
@@ -26,15 +28,10 @@ var T = new Twit({
   access_token_secret: keys.access_token_secret,
 });
 
-
-
-// Instagram.set('client_id', '1cafdff61691495b9dd4bada3a632fb8');
-// Instagram.set('client_secret', '7cb425c5de864fd386157d00c6440456');
-
 // Every call to `ig.use()` overrides the `client_id/client_secret`
 // or `access_token` previously entered if they exist.
-ig.use({ client_id: '1cafdff61691495b9dd4bada3a632fb8',
-         client_secret: '7cb425c5de864fd386157d00c6440456' });
+ig.use({ client_id: keys.ig_client_id,
+         client_secret: keys.ig_client_secret });
 
 ig.media_search(39.748767, -104.999994, {distance: 5000}, function(err, medias, remaining, limit) {
     var searchCaptions = _.map(medias, function (item) {
