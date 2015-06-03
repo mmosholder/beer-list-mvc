@@ -1,0 +1,56 @@
+/* Large Devices, Wide Screens */
+@media (max-width : 1200px){
+
+}
+
+/* Medium Devices, Desktops */
+@media (max-width : 992px){
+
+}
+
+/* Small Devices, Tablets */
+@media (max-width : 768px){
+    .header-container li {
+        display: inline-block;
+        float: left;
+    }
+    .header-container li i,
+    .header-container li span {
+        float: left;
+    }
+    .header-container li.logo {
+        width: 15%;
+    }
+    .header-container li.log-in {
+        margin-top: 15px;
+        width: 32%;
+    }
+    .header-container li.create-account {
+        width: 50%;
+        margin-top: 15px;
+    }
+    .hero {
+        padding: 5px;
+        top: 5%;
+        transform: none;
+    }
+    .hero .white-text {
+      margin: 15px 5px;
+      font-size: 1em;
+
+    }
+    .venn-beers {
+        width: 200px;
+    }
+
+}
+
+/* Extra Small Devices, Phones */
+@media (max-width : 480px){
+
+}
+
+/* Custom, iPhone Retina */
+@media (max-width : 320px){
+
+}

@@ -30,7 +30,7 @@ body {
 }
 .header-container li {
     display: block;
-    width: 33.33%;
+    width: 33.3333%;
 }
 .nav>li>a:hover {
     background-color: rgba(123, 252, 207, 1);
@@ -74,7 +74,6 @@ body {
     font-weight: 700;
     padding: 0;
     display: block;
-    line-height: 55px;
 }
 /************************************
 Content Classes
@@ -253,18 +252,28 @@ Modal Styles
     width: 1170px;
 }
 .item-container img {
-    max-width: 80px;
+    width: 80px;
 }
 .single-item.row {
     margin-left: 0;
     margin-right: 0;
 }
 .single-item {
-    padding: 5px 10px;
+    padding: 10px;
     border-bottom: 1px solid #ddd;
     background-color: rgba(250,250,250,.95);
 }
-
+.single-item p {
+    font-size: 1.1em;
+}
+.single-item h4 {
+    font-weight: 700;
+    font-size: 20px;
+}
+.time {
+    color: #aaa;
+    font-style: italic
+}
 .form-group {
     margin-bottom: 0;
 }
@@ -287,6 +296,9 @@ Modal Styles
 .new-location-submit:hover,
 .modal-submit:hover {
     background-color: #3836bc;
+}
+.location-submit {
+    width: 100%;
 }
 .modal-submit {
     width: 100%;

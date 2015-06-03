@@ -1,4 +1,4 @@
-var Twitter = require('twitter');
+var Twit = require('twit');
 var _ = require('underscore');
 var geocoder = require('simple-geocoder');
 var ig = require('instagram-node').instagram();
@@ -10,19 +10,20 @@ if(process.env.API_KEY){
     keys = {
         consumer_key:  process.env.CONSUMER_KEY,
         consumer_secret: process.env.CONSUMER_SECRET,
-        access_token_key: process.env.ACCESS_TOKEN_KEY,
-        access_token_secret: process.env.ACCESS_TOKEN_SECRET
+        access_token: process.env.ACCESS_TOKEN_KEY,
+        access_token_secret: process.env.ACCESS_TOKEN_SECRET,
+        graph_access_token: process.env.GRAPH_ACCESS_TOKEN
     };
 } else {
     var keys = require('../private.js');
 }
 
 
-var client = new Twitter({
+var T = new Twit({
   consumer_key: keys.consumer_key,
   consumer_secret: keys.consumer_secret,
-  access_token_key: keys.access_token_key,
-  access_token_secret: keys.access_token_secret
+  access_token: keys.access_token_key,
+  access_token_secret: keys.access_token_secret,
 });
 
 
@@ -48,7 +49,7 @@ ig.media_search(39.748767, -104.999994, {distance: 5000}, function(err, medias, 
         var tags = item.tags;
         var captions = item.caption;
         for(var i = 0; i < tags.length; i++) {
-            if (tags[i].toLowerCase() === 'beer' || tags[i].toLowerCase() === 'craftbeer' || tags[i].toLowerCase() === 'brewery') {
+            if (tags[i] === 'beer' || tags[i] === 'craftbeer' || tags[i] === 'brewery') {
                 console.log(tags[i]);
             }
         }
@@ -56,14 +57,14 @@ ig.media_search(39.748767, -104.999994, {distance: 5000}, function(err, medias, 
 
 });
 
-graph.setAccessToken('1006080399410781|_iwF0gK2imuX5hy_FjcpE_vdGrs');
+graph.setAccessToken(keys.graph_access_token);
 
 
 var fbIds = function (location, onComplete) {
     geocoder.geocode(location, function (success, locations) {
         if (success) console.log(success);
         var location = locations.y + ',' + locations.x;
-        graph.search({q: 'beer', q: 'brewery', type: 'place', center: location, distance: '7000'}, function(err, res) {
+        graph.search({q: 'brewery', type: 'place', center: location, distance: '10000'}, function(err, res) {
             if (err) return onComplete(err);
 
             var itemArr = [];
@@ -128,14 +129,13 @@ var fbPosts = function (arr, onComplete) {
 
 var newFeed = function (location, onComplete) {
     geocoder.geocode(location, function (success, locations) {
-        var location = locations.y + ',' + locations.x + ',20mi';
-        client.get('search/tweets', {
-            q: '"new beer" OR "just tapped" OR "on tap" OR "beer specials" OR "now pouring" -Untappd', 
+        var location = locations.y + ',' + locations.x + ',10mi';
+        T.get('search/tweets', {
+            q: '"new beer" OR "now brewing" OR "just tapped" OR "on tap" OR "craft beer" OR "tap room" OR "beer tasting" -Untappd', 
             geocode: location, 
             result_type: 'recent',
-            count: 30
+            count: 40
         }, function(error, tweets, response){
-
             if(tweets.length) {
                 console.log('No results found');
             } else {
@@ -143,6 +143,9 @@ var newFeed = function (location, onComplete) {
                     var parseTwitterDate = function (text) {
                         return new Date(Date.parse(text.replace(/( +)/, ' UTC$1')));
                     };
+                    // var getLargePhoto = function (img) {
+                    //     img.replace('normal.jpg', '400x400.jpg').replace('normal.gif', '400x400.gif');
+                    // };
 
                     return ({message: item.text, 
                             name: item.user.screen_name, 
@@ -150,6 +153,7 @@ var newFeed = function (location, onComplete) {
                             photoUrl: item.user.profile_image_url});        
                 });
                 onComplete(newTweets);
+                console.log(newTweets);
             }
         });
     });
