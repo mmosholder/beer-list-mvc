@@ -10,7 +10,7 @@ body {
     box-shadow: 3px 5px 8px #333;;
     background-image: url('/images/kegs_zoom.png');
     background-size: cover;
-    height: 500px;
+    height: 480px;
 }
 .header-container {
     background-color: rgba(123, 252, 207, .7);
@@ -66,7 +66,8 @@ body {
 .beer-icon {
     width: 30px;
     display: inline-block;
-    margin: 0 5px;
+    margin: -1px 5px 0 5px;
+
 }
 .header-container .fa {
     padding: 0 5px;
