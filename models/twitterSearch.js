@@ -61,7 +61,37 @@ var fbIds = function (location, onComplete) {
     geocoder.geocode(location, function (success, locations) {
         if (success) console.log(success);
         var location = locations.y + ',' + locations.x;
+                
         graph.search({q: 'brewery', type: 'place', center: location, distance: '10000'}, function(err, res) {
+            if (err) return onComplete(err);
+
+            var itemArr = [];
+
+            var searchResults = function (err, res) {
+                if (err) return onComplete(err);
+                // needs to save data, and check if 'next' exists
+                itemArr = itemArr.concat(res.data);
+
+                if(res.paging.next) {
+                    graph.get(res.paging.next, searchResults);
+                } else {
+                    var idArr = _.map(itemArr, function (item) {
+                        return ({id: item.id, name: item.name});
+                    });
+                    onComplete(null, idArr);
+                }
+            };
+            searchResults(null, res);
+        });
+    });
+};
+
+var beerQuery = function (location, onComplete) {
+    geocoder.geocode(location, function (success, locations) {
+        if (success) console.log(success);
+        var location = locations.y + ',' + locations.x;
+                
+        graph.search({q: 'beer', type: 'place', center: location, distance: '10000'}, function(err, res) {
             if (err) return onComplete(err);
 
             var itemArr = [];
@@ -130,6 +160,7 @@ var newFeed = function (location, onComplete) {
         T.get('search/tweets', {
             q: '"new beer" OR "now brewing" OR "just tapped" OR "on tap" OR "craft beer" OR "tap room" OR "beer tasting" -Untappd', 
             geocode: location, 
+            since: '603547097942523900',
             result_type: 'recent',
             count: 40
         }, function(error, tweets, response){
@@ -160,5 +191,6 @@ var newFeed = function (location, onComplete) {
 module.exports = {
     newFeed: newFeed,
     fbItems: fbIds,
-    fbPosts: fbPosts
+    fbPosts: fbPosts,
+    beerQuery: beerQuery
 };

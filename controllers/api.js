@@ -24,7 +24,7 @@ var apiController = {
                 newFeed.newFeed(req.query.location, function (tweets) {
                     onComplete(null, tweets);
                 });
-            }, function (onComplete) {
+            },function (onComplete) {
                 newFeed.fbItems(req.query.location, function (err, ids) {
                     if (err) return console.log(err);
                     // perform next level function on results before sending

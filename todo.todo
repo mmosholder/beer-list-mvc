@@ -20,12 +20,13 @@
  ☐ when first search is performed, slide search bar to top and make box go away
  ☐ Hide Insta and FB keys in private.js
  ☐ mobile styling
- ☐ ease in initial form on page load
+ ✔ ease in initial form on page load @done (15-06-03 14:36)
  ✔ format Date @done (15-06-02 17:53)
- ☐ info boxes on load
- ☐ info boxes disappear on submittal
+ ✔ info boxes on load @done (15-06-03 14:36)
+ ✔ info boxes disappear on submittal @done (15-06-03 14:36)
  ☐ set up heroku with personal URL
  ☐ edit FB search to perform 2 searches and merge for diff terms
+ ☐ Loading Spinner while waiting for results
 
 
  Start with User Authentication

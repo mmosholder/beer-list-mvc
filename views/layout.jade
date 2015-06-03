@@ -9,23 +9,17 @@ html(lang='en', ng-app="beerApp")
         link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
         link(rel="stylesheet" href="/main.css")
         link(rel="stylesheet" href="/mobile.css")
+        link(rel="stylesheet" href="/beer.css")
     body(ng-controller="dataController")
         header.main-header.row
             .container.header-container
                 .col-sm-12
                     .navbar-header.visible-xs
                         ul.text-center.nav.navbar-nav
-                            li.logo 
+                            li.logo.text-left
                                 a(href="/")
                                     img.beer-icon(src="/images/beer-icon.png")
-                            li.log-in
-                                a(type="button" data-toggle="modal" data-target="#log-in")
-                                    i.fa.fa-bolt
-                                    span Log In
-                            li.create-account
-                                a(type="button" data-toggle="modal" data-target="#add-user-modal")
-                                    i.fa.fa-plus 
-                                    span Create Account
+                                    h2 BREWSR
                     .navbar.hidden-xs
                         ul.text-center.nav.navbar-nav
                             li.log-in
@@ -47,13 +41,13 @@ html(lang='en', ng-app="beerApp")
                 .row.secondary-search.animate-show(ng-show="secondarySearchForm")
                     h3.text-center.white-text Search a different location
                     form(ng-submit="newLocation()", method="get")
-                        .form-group.col-sm-offset-3.col-sm-6.col-xs-offset-1.col-xs-10
+                        .form-group.col-xs-offset-1.col-xs-8.col-sm-offset-3.col-sm-6
                             input#location.form-control.text-center(type="text" ng-model="newFeed.location" placeholder="Search a City, State or ZIP (eg. Denver, CO or 15557)")
-                        input(type="submit" value="Beer").new-location-submit.col-sm-1
+                        input(type="submit" value="Beer").new-location-submit.col-xs-3.col-sm-1
                 .hero.animate-show(ng-show="initialSearch")
                     h2.text-center.white-text Brewsr finds new beers and events at breweries and bars near you
                     .row.form-row
-                        form(ng-submit="newLocation()", method="get").col-sm-offset-3.col-sm-6.row.col-xs-offset-1.col-xs-10
+                        form(ng-submit="newLocation()", method="get").col-xs-offset-1.col-xs-10.col-sm-offset-3.col-sm-6.row
                             .form-group
                                 input#location.form-control.text-center(type="text" ng-model="newFeed.location" placeholder="Search a City, State or ZIP (eg. Denver, CO or 15557)")
                             input(type="submit" value="Find All The Beer" ng-click="secondarySearch()").location-submit      

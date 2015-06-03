@@ -10,6 +10,9 @@
 
 /* Small Devices, Tablets */
 @media (max-width : 768px){
+    .main-header {
+        height: 320px;
+    }
     .header-container li {
         display: inline-block;
         float: left;
@@ -19,15 +22,14 @@
         float: left;
     }
     .header-container li.logo {
-        width: 15%;
+        width: 100%;
     }
-    .header-container li.log-in {
-        margin-top: 15px;
-        width: 32%;
-    }
-    .header-container li.create-account {
-        width: 50%;
-        margin-top: 15px;
+    .logo h2 {
+        display: inline-block;
+        font-family: 'Dosis', sans-serif;
+        vertical-align: bottom;
+        margin-top: -10px;
+        margin-bottom: 5px;
     }
     .header-container li a {
         line-height: none;
@@ -39,11 +41,26 @@
     }
     .hero .white-text {
       margin: 15px 5px;
-      font-size: 1em;
-
+      font-size: 1.6em;
+    }
+    .form-container {
+        padding: 0;
+    }
+    #location {
+        font-size: 1em;
     }
     .venn-beers {
         width: 200px;
+    }
+    .item-container {
+        width: 98%;
+    }
+    .single-item {
+        padding: 0;
+    }
+    .item-container img {
+        width: 40px;
+        margin: 15px 10px 0 0;
     }
 
 }

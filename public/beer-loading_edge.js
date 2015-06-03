@@ -1,0 +1,7 @@
+
+(function(compId){var _=null,y=true,n=false,x9='rect(@@0@@px @@1@@px @@2@@px @@3@@px)',x2='5.0.0',x4='rgba(0,0,0,0)',x1='5.0.1',cl='clip',g='image',x7='rgba(123,252,207,0.60)',e8='${fill}',x3='5.0.1.386',i='none';var g6='container.svg',g5='fill.svg';var im='images/',aud='media/',vid='media/',js='js/',fonts={},opts={'gAudioPreloadPreference':'auto','gVideoPreloadPreference':'auto'},resources=[],scripts=[],symbols={"stage":{v:x1,mv:x2,b:x3,stf:i,cg:i,rI:n,cn:{dom:[{id:'fill',t:g,r:['-1021px','-448px','2592px','1296px','auto','auto'],cl:'rect(759.859375px 2592px 1296px 0px)',f:[x4,im+g5,'0px','0px']},{id:'container',t:g,r:['-1021px','-448px','2592px','1296px','auto','auto'],f:[x4,im+g6,'0px','0px']}],style:{'${Stage}':{isStage:true,r:[undefined,undefined,'550px','400px'],overflow:'hidden',f:[x7]}}},tt:{d:1000,a:y,data:[["eid15",cl,0,1000,"linear",e8,[759.859375,2592,1296,0],[535.7734375,2592,1296,0],{vt:x9}]]}}};AdobeEdge.registerCompositionDefn(compId,symbols,fonts,scripts,resources,opts);})("EDGE-929685255");
+(function($,Edge,compId){var Composition=Edge.Composition,Symbol=Edge.Symbol;Edge.registerEventBinding(compId,function($){
+//Edge symbol: 'stage'
+(function(symbolName){})("stage");
+//Edge symbol end:'stage'
+})})(AdobeEdge.$,AdobeEdge,"EDGE-929685255");
