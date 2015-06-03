@@ -29,6 +29,9 @@
         width: 50%;
         margin-top: 15px;
     }
+    .header-container li a {
+        line-height: none;
+    }
     .hero {
         padding: 5px;
         top: 5%;

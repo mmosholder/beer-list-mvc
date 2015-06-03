@@ -23,7 +23,7 @@ var authenticationController = require('./controllers/authentication');
 var apiController = require('./controllers/api');
 
 // Connect to DB
-mongoose.connect('mongodb://localhost/beer-project');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/beer-project');
 
 
 var app = express();

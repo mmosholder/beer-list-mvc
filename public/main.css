@@ -20,6 +20,12 @@ body {
     border-radius: 0;
     min-height: 50px;
 }
+.header-container .col-sm-12 {
+    padding: 0;
+}
+.navbar {
+    margin-bottom: 0;
+}
 .header-container ul {
     list-style: none;
     padding-left: 0;
@@ -74,6 +80,7 @@ body {
     font-weight: 700;
     padding: 0;
     display: block;
+    line-height: 55px;
 }
 /************************************
 Content Classes
@@ -204,6 +211,9 @@ Modal Styles
 }
 .form-container {
     height: 87%;
+}
+.secondary-search {
+    margin-top: 20px;
 }
 .content {
     padding: 0;
