@@ -1,6 +1,7 @@
 extends layout
 
 block content
+    .loading-container
     .item-container
         .single-item.row(ng-repeat="post in feed | orderBy: '-created_time'")
             .col-xs-1.col-sm-1.text-center

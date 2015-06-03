@@ -57,12 +57,12 @@ ig.media_search(39.748767, -104.999994, {distance: 5000}, function(err, medias, 
 graph.setAccessToken(keys.graph_access_token);
 
 
-var fbIds = function (location, onComplete) {
+var fbIds = function (location, query, onComplete) {
     geocoder.geocode(location, function (success, locations) {
         if (success) console.log(success);
         var location = locations.y + ',' + locations.x;
                 
-        graph.search({q: 'brewery', type: 'place', center: location, distance: '10000'}, function(err, res) {
+        graph.search({q: query, type: 'place', center: location, distance: '10000'}, function(err, res) {
             if (err) return onComplete(err);
 
             var itemArr = [];
@@ -85,36 +85,6 @@ var fbIds = function (location, onComplete) {
         });
     });
 };
-
-var beerQuery = function (location, onComplete) {
-    geocoder.geocode(location, function (success, locations) {
-        if (success) console.log(success);
-        var location = locations.y + ',' + locations.x;
-                
-        graph.search({q: 'beer', type: 'place', center: location, distance: '10000'}, function(err, res) {
-            if (err) return onComplete(err);
-
-            var itemArr = [];
-
-            var searchResults = function (err, res) {
-                if (err) return onComplete(err);
-                // needs to save data, and check if 'next' exists
-                itemArr = itemArr.concat(res.data);
-
-                if(res.paging.next) {
-                    graph.get(res.paging.next, searchResults);
-                } else {
-                    var idArr = _.map(itemArr, function (item) {
-                        return ({id: item.id, name: item.name});
-                    });
-                    onComplete(null, idArr);
-                }
-            };
-            searchResults(null, res);
-        });
-    });
-};
-
 
 var fbPosts = function (arr, onComplete) {
     async.parallel(
@@ -191,6 +161,5 @@ var newFeed = function (location, onComplete) {
 module.exports = {
     newFeed: newFeed,
     fbItems: fbIds,
-    fbPosts: fbPosts,
-    beerQuery: beerQuery
+    fbPosts: fbPosts
 };
