@@ -41,7 +41,7 @@ html(lang='en', ng-app="beerApp")
                 .row.secondary-search.animate-show(ng-show="secondarySearchForm")
                     h3.text-center.white-text Search a different location
                     form(ng-submit="newLocation()", method="get")
-                        .form-group.col-xs-offset-1.col-xs-8.col-sm-offset-3.col-sm-6
+                        .form-group.col-xs-8.col-sm-offset-3.col-sm-6
                             input#location.form-control.text-center(type="text" ng-model="newFeed.location" placeholder="Search a City, State or ZIP (eg. Denver, CO or 15557)")
                         input(type="submit" value="Beer").new-location-submit.col-xs-3.col-sm-1
                 .hero.animate-show(ng-show="initialSearch")

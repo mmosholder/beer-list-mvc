@@ -27,6 +27,7 @@
  ☐ set up heroku with personal URL
  ☐ edit FB search to perform 2 searches and merge for diff terms
  ☐ Loading Spinner while waiting for results
+ ☐ weed out non-links
 
 
  Start with User Authentication
