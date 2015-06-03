@@ -80,7 +80,7 @@ app.get('/signup', indexController.signup);
 app.use(passportConfig.ensureAuthenticated);
 
 
-
-var server = app.listen(9945, function() {
-	console.log('Express server listening on port ' + server.address().port);
+var port = process.env.PORT || 9945;
+var server = app.listen(port, function() {
+	console.log('Express server listening on port ' + port);
 });
