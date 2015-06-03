@@ -9,14 +9,10 @@ beerApp.config(function ($routeProvider){
 
 beerApp.controller('dataController', function ($scope, $http) {
     $scope.newLocation = function () {
-        $http.get('/api/getTweets', {params: {location: $scope.newFeed.location}}).success(function (data) {
+        $http.get('/api/getFeeds', {params: {location: $scope.newFeed.location}}).success(function (data) {
             console.log(data);
-            $scope.feed = data.tweets;
+            $scope.feed = data;
         });
-        // $http.get('/api/getFbFeed', {params: {location: $scope.newFeed.location}}).success(function (data) {
-        //     console.log(data);
-        //     $scope.feed = data.results;
-        // });
     };
 
     $scope.secondarySearchForm = false;

@@ -3,11 +3,12 @@
 body {
     font-family: 'Oxygen', sans-serif;
     color: #333;
+    background-color: rgba(51,51,51,.9);
 }
 .main-header {
     margin: 0 0 10px 0;
-    box-shadow: 1px 3px 5px #aaa;
-    background-image: url('/images/kegs_blur.png');
+    box-shadow: 3px 5px 8px #333;;
+    background-image: url('/images/kegs_zoom.png');
     background-size: cover;
     height: 500px;
 }
@@ -205,9 +206,6 @@ Modal Styles
 .form-container {
     height: 87%;
 }
-.secondary-search {
-    margin-top: 30px;
-}
 .content {
     padding: 0;
     margin-bottom: 20px;
@@ -245,7 +243,7 @@ Modal Styles
 }
 .item-container {
     list-style: none;
-    margin-top: 20px;
+    margin: 20px 0;
     padding-left: 0;
     box-shadow: 1px 1px 3px #999;
     position: absolute;
@@ -253,6 +251,9 @@ Modal Styles
     left: 50%;
     transform: translateX(-50%);
     width: 1170px;
+}
+.item-container img {
+    max-width: 80px;
 }
 .single-item.row {
     margin-left: 0;
@@ -293,14 +294,23 @@ Modal Styles
     font-size: 14px;
 }
 .new-location-submit {
-    margin: 0 0 0 -20px;
+    margin: 0 0 0 -80px;
+}
+.secondary-search #location {
+    margin-left: 20px;
 }
 .form-btn:hover {
     background: #0998E5;
 }
-.info-container h3 {
+.info-container {
+    margin: 15px 0;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+}
+.info-container h2 {
     display: inline-block;
-    border-bottom: 3px solid #333;
+    font-family: 'Dosis', sans-serif;
+    text-transform: uppercase;
 }
 .edit-favorites {
     display: none;
@@ -349,4 +359,7 @@ Modal Styles
 }
 .updates {
     float: right;
+}
+.venn-beers {
+    width: 400px;
 }

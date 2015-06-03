@@ -1,30 +1,43 @@
 var newFeed = require('../models/twitterSearch.js');
+var async = require('async');
+var _ = require('underscore');
 
 var apiController = {
-    twitterFeed: function (req, res) {
-        newFeed.newFeed(req.query.location, function (tweets) {
-            res.send({tweets: tweets});
-        });
-    },
-    fbFeed: function (req, res) {
-        newFeed.fbIds(req.query.location, function (err, results){
-            if (err) {
-                console.log(err);
-                return res.status(500);
-            }
-            // perform next level function on results before sending
-            res.send({results: results});
-        });
-    }
-    // fbPosts: function (req, res) {
-    //     newFeed.fbPosts(req.query.location, function (err, posts) {
-    //         if (err) {
-    //             console.log(ere);
-    //             return res.status(500);
-    //         }
-    //         res.send({posts: posts});
+    // twitterFeed: function (req, res) {
+    //     newFeed.newFeed(req.query.location, function (tweets) {
+    //         res.send({tweets: tweets});
     //     });
-    // }     
+    // },
+    // fbFeed: function (req, res) {
+    //     newFeed.fbItems(req.query.location, function (err, ids) {
+    //         if (err) return console.log(err);
+    //         // perform next level function on results before sending
+    //         newFeed.fbPosts(ids, function (err, posts){
+    //             if (err) return console.log(err);
+    //             res.send({posts: posts});
+    //         });
+    //     });
+    // },
+    getFeeds: function (req, res) {
+        async.parallel([
+            function (onComplete) {
+                newFeed.newFeed(req.query.location, function (tweets) {
+                    onComplete(null, tweets);
+                });
+            }, function (onComplete) {
+                newFeed.fbItems(req.query.location, function (err, ids) {
+                    if (err) return console.log(err);
+                    // perform next level function on results before sending
+                    newFeed.fbPosts(ids, function (err, posts){
+                        if (err) return console.log(err);
+                        onComplete(null, posts);
+                    });
+                });
+            }
+        ], function (err, results) {
+            res.send(_.flatten(results));
+        });
+    }     
 };
 
 module.exports = apiController;

@@ -2,7 +2,8 @@ doctype html
 html(lang='en', ng-app="beerApp")
     head
         meta(charset="utf-8")
-        title Untitled
+        meta(name="viewport" user-scalable="yes")
+        title BREWSR | An app for finding beer
         link(rel='shortcut icon', href='/images/favicon.ico')
         link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
         link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
@@ -28,11 +29,11 @@ html(lang='en', ng-app="beerApp")
                 if error
                     h3= error
                 .row.secondary-search.animate-show(ng-show="secondarySearchForm")
-                    h3.text-center.white-text Search again for even more beer!
+                    h3.text-center.white-text Search a different location
                     form(ng-submit="newLocation()", method="get")
-                        .form-group.col-sm-offset-3.col-sm-5
+                        .form-group.col-sm-offset-3.col-sm-6
                             input#location.form-control.text-center(type="text" ng-model="newFeed.location" placeholder="Search a City, State or ZIP (eg. Denver, CO or 15557)")
-                        input(type="submit" value="src='/images/beer-icon.png'").new-location-submit.col-sm-1 
+                        input(type="submit" value="Beer").new-location-submit.col-sm-1 
                 .hero.animate-show(ng-show="initialSearch")
                     h2.text-center.white-text Brewsr finds new beers and events at breweries and bars near you
                     .row.form-row

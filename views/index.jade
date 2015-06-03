@@ -2,16 +2,18 @@ extends layout
 
 block content
     .item-container
-        .single-item.row(ng-repeat="tweet in feed")
-            img(ng-src='{{tweet.profilePhoto}}').col-sm-1
+        .single-item.row(ng-repeat="post in feed | orderBy: '-created_time'")
+            .col-sm-1
+                img(ng-src='{{post.photoUrl}}')
             .col-sm-11
-                h4 @{{tweet.name}}
-                p {{tweet.text}}
-                p {{tweet.time | date :'short'}}
+                h4 @ {{post.name}}
+                p: a(href="{{post.link}}" target="_blank") {{post.message}}
+                p {{post.created_time | date:'d MMM yyyy'}}
     .info-container.row(ng-show="initialLoadContent")
-        .col-sm-4.text-center
-            h3 Brewsr does this
-        .col-sm-4.text-center
-            h3 You can use Brewsr like this
-        .col-sm-4.text-center
-            h3 Look how fun we are
+        .col-sm-6.text-center
+            h2 What is Brewsr?
+            h4 Brewsr visits Twitter, Facebook, and Instagram to find brewery updates in the area -- all you have to do is tell it where to look
+            p: img.venn-beers(src="/images/venn-beers.png")
+        .col-sm-6.text-center
+            h2 How does one Brewsr?
+

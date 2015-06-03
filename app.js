@@ -64,9 +64,7 @@ app.get('/auth/logout', authenticationController.logout);
 // get request for index before ensureAuthenticated since all visitors can see index, not just logged in users
 app.get('/', indexController.index);
 
-app.get('/api/getTweets', apiController.twitterFeed);
-
-app.get('/api/getFbFeed', apiController.fbFeed);
+app.get('/api/getFeeds', apiController.getFeeds);
 
 // app.get('/api/getFbPosts', apiController.fbPosts);
 

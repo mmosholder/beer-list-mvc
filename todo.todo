@@ -4,15 +4,15 @@
  ☐ investigate beer mapping project api
  ☐ decide what libraries and platforms are needed for the project
  ☐ investigate twitter/facebook/social APIs to search for terms about new beers, perhaps even untappd api to provide ratings (perhaps not necessary due to them, sometimes, being new beers)?
- ☐ Wireframe out screens and user flows
- ☐ design: font, colors, layout
+ ✔ Wireframe out screens and user flows @done (15-06-02 14:39)
+ ✔ design: font, colors, layout @done (15-06-02 14:39)
  ☐ Feature List
- ☐ What data is needed?
- ☐ What confirm/alert messages are needed?
- ☐ how will the data perform based on inputs?
- ☐ geolocation on load, user zip entry, and also radius choice to perform the query. initial page load will show entire state or US?
- ☐ Find admire sites/transitions/colors/fonts/apps
- ☐ Use locatoins like a weather app
+ ✔ What data is needed? @done (15-06-02 14:39)
+ ✔ What confirm/alert messages are needed? @done (15-06-02 14:39)
+ ✔ how will the data perform based on inputs? @done (15-06-02 14:39)
+ ✔ geolocation on load, user zip entry, and also radius choice to perform the query. initial page load will show entire state or US? @done (15-06-02 14:39)
+ ✔ Find admire sites/transitions/colors/fonts/apps @done (15-06-02 14:39)
+ ☐ Use locations like a weather app (mobile app i nthe future)
  ☐ sockets/set interval for auto updates
  ☐ style modals
  ☐ famo.us transitions for rendering twitter lists
@@ -21,10 +21,11 @@
  ☐ Hide Insta and FB keys in private.js
  ☐ mobile styling
  ☐ ease in initial form on page load
- ☐ format Date
+ ✔ format Date @done (15-06-02 17:53)
  ☐ info boxes on load
  ☐ info boxes disappear on submittal
- ☐ 
+ ☐ set up heroku with personal URL
+
 
  Start with User Authentication
  Get in data
