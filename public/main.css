@@ -397,14 +397,12 @@ Modal Styles
 .venn-beers {
     width: 400px;
 }
-.how {
-    margin-top: 40px;
+.testimonials img {
+    width: 50px;
+    display: inline-block;
+    float: left;
+    overflow: hidden;
 }
-.how h2 {
-    font-family: 'Oxygen', sans-serif;
-    text-transform: none;
-    display: block;
-}
-.how img {
-    width: 400px;
+.testimonials p {
+    display: inline-block;
 }
