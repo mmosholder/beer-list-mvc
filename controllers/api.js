@@ -2,6 +2,18 @@ var newFeed = require('../models/twitterSearch.js');
 var async = require('async');
 var _ = require('underscore');
 
+var myUnique = function (arr) {
+    var check = {};
+    var output = [];
+
+    for(var i = 0; i < arr.length; i++) {
+        if (!(check[arr[i].message])) {
+            check[arr[i].message] = true;
+            output.push(arr[i]);
+        }
+    }
+};
+
 var apiController = {
     // twitterFeed: function (req, res) {
     //     newFeed.newFeed(req.query.location, function (tweets) {
