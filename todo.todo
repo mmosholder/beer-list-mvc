@@ -30,6 +30,7 @@
  ☐ weed out non-links
  ☐ parse out duplicate rendered items
  ☐ refine Twitter return
+ ☐ appropriately handle and display errors for failed search, restart server if crashed
 
  Start with User Authentication
  Get in data
