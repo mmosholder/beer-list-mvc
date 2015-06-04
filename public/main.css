@@ -397,12 +397,17 @@ Modal Styles
 .venn-beers {
     width: 400px;
 }
+.testimonials-content {
+    margin: 10px 0;
+}
 .testimonials img {
     width: 50px;
     display: inline-block;
     float: left;
     overflow: hidden;
+    margin: 0 10px;
 }
-.testimonials p {
+.testimonials .inline {
     display: inline-block;
+    float: left;
 }
