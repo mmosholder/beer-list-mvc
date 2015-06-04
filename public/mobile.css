@@ -54,6 +54,8 @@
     }
     .item-container {
         width: 98%;
+        left: 0;
+        transform: none;
     }
     .single-item {
         padding: 0;
@@ -61,7 +63,6 @@
     .item-container img {
         width: 40px;
         margin: 15px 10px 0 0;
-        left: 0;
     }
 
 }
