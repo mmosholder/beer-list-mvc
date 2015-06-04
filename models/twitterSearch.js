@@ -143,7 +143,7 @@ var newFeed = function (location, onComplete) {
                     };
                     var twitterUrl = function (str) {
                         var exp = /https?:(.*)$/;
-                        return exp.exec(str)[0];
+                        return (exp.exec(str)[0]);
                     };
 
                     return ({message: item.text, 
