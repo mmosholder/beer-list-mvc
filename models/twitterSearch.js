@@ -141,14 +141,17 @@ var newFeed = function (location, onComplete) {
                     var parseTwitterDate = function (text) {
                         return new Date(Date.parse(text.replace(/( +)/, ' UTC$1')));
                     };
-                    // var getLargePhoto = function (img) {
-                    //     img.replace('normal.jpg', '400x400.jpg').replace('normal.gif', '400x400.gif');
-                    // };
+                    var twitterUrl = function (str) {
+                        var exp = /https?:(.*)$/;
+                        return exp.exec(str)[0];
+                    };
 
                     return ({message: item.text, 
                             name: item.user.screen_name, 
                             created_time: parseTwitterDate(item.created_at),
-                            photoUrl: item.user.profile_image_url});        
+                            photoUrl: item.user.profile_image_url,
+                            link: twitterUrl(str)
+                        });
                 });
                 onComplete(newTweets);
                 console.log(newTweets);
