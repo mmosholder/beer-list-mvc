@@ -411,3 +411,6 @@ Modal Styles
     display: inline-block;
     float: left;
 }
+.testimonials span {
+    font-size: 20px;
+}

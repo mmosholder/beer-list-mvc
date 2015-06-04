@@ -43,17 +43,19 @@ var apiController = {
                                 onComplete(null, posts);
                             });
                         });
-                    },function (onComplete) {
-                        newFeed.fbItems(req.query.location, 'brewery', function (err, ids) {
-                            if (err) return console.log(err);
-                            // perform next level function on results before sending
-                            newFeed.fbPosts(ids, function (err, posts){
-                                if (err) return console.log(err);
-                                onComplete(null, posts);
-                            });
-                        });
-                    }, function (onComplete) {
-                        newFeed.fbItems(req.query.location, '"brewing company"', function (err, ids) {
+                    },
+                    // function (onComplete) {
+                    //     newFeed.fbItems(req.query.location, 'brewery', function (err, ids) {
+                    //         if (err) return console.log(err);
+                    //         // perform next level function on results before sending
+                    //         newFeed.fbPosts(ids, function (err, posts){
+                    //             if (err) return console.log(err);
+                    //             onComplete(null, posts);
+                    //         });
+                    //     });
+                    // }, 
+                    function (onComplete) {
+                        newFeed.fbItems(req.query.location, '"brewing"', function (err, ids) {
                             if (err) return console.log(err);
                             // perform next level function on results before sending
                             newFeed.fbPosts(ids, function (err, posts){
