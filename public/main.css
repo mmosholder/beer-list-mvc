@@ -289,6 +289,9 @@ Modal Styles
     font-weight: 700;
     font-size: 20px;
 }
+.single-item a {
+    word-wrap: break-word;
+}
 .time {
     color: #aaa;
     font-style: italic

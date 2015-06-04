@@ -4,9 +4,9 @@ block content
     .loading-container
     .item-container
         .single-item.row(ng-repeat="post in feed | orderBy: '-created_time'")
-            .col-xs-1.col-sm-1.text-center
+            .col-xs-12.col-sm-1.text-center
                 img(ng-src='{{post.photoUrl}}')
-            .col-xs-11.col-sm-11
+            .col-xs-12.col-sm-11
                 h4 {{post.name}}
                 p: a(href="{{post.link}}" target="_blank") {{post.message}}
                 p.time {{post.created_time | date:'d MMM yyyy'}}

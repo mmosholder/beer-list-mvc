@@ -1,12 +1,12 @@
- ☐ Spec out data model(s) needed for project -- users, breweries(?)
+ ✔ Spec out data model(s) needed for project -- users, breweries(?) @done (15-06-03 22:18)
  ☐ Location info on load / user sessions/tokens 
- ☐ database, user authentication with passport
+ ✔ database, user authentication with passport @done (15-06-03 22:18)
  ☐ investigate beer mapping project api
  ☐ decide what libraries and platforms are needed for the project
- ☐ investigate twitter/facebook/social APIs to search for terms about new beers, perhaps even untappd api to provide ratings (perhaps not necessary due to them, sometimes, being new beers)?
+ ✔ investigate twitter/facebook/social APIs to search for terms about new beers, perhaps even untappd api to provide ratings (perhaps not necessary due to them, sometimes, being new beers)? @done (15-06-03 22:18)
  ✔ Wireframe out screens and user flows @done (15-06-02 14:39)
  ✔ design: font, colors, layout @done (15-06-02 14:39)
- ☐ Feature List
+ ✔ Feature List @done (15-06-03 22:18)
  ✔ What data is needed? @done (15-06-02 14:39)
  ✔ What confirm/alert messages are needed? @done (15-06-02 14:39)
  ✔ how will the data perform based on inputs? @done (15-06-02 14:39)
@@ -14,21 +14,22 @@
  ✔ Find admire sites/transitions/colors/fonts/apps @done (15-06-02 14:39)
  ☐ Use locations like a weather app (mobile app i nthe future)
  ☐ sockets/set interval for auto updates
- ☐ style modals
+ ✔ style modals @done (15-06-03 22:10)
  ☐ famo.us transitions for rendering twitter lists
- ☐ return 'Sorry, no results at this time' for empty search
- ☐ when first search is performed, slide search bar to top and make box go away
- ☐ Hide Insta and FB keys in private.js
- ☐ mobile styling
+ ✔ return 'Sorry, no results at this time' for empty search @done (15-06-03 22:10)
+ ✔ when first search is performed, slide search bar to top and make box go away @done (15-06-03 22:10)
+ ✔ Hide Insta and FB keys in private.js @done (15-06-03 22:10)
+ ✔ mobile styling @done (15-06-03 22:10)
  ✔ ease in initial form on page load @done (15-06-03 14:36)
  ✔ format Date @done (15-06-02 17:53)
  ✔ info boxes on load @done (15-06-03 14:36)
  ✔ info boxes disappear on submittal @done (15-06-03 14:36)
- ☐ set up heroku with personal URL
- ☐ edit FB search to perform 2 searches and merge for diff terms
- ☐ Loading Spinner while waiting for results
+ ✔ set up heroku with personal URL @done (15-06-03 22:10)
+ ✔ edit FB search to perform 2 searches and merge for diff terms @done (15-06-03 22:10)
+ ☐ Loading Spinner or Animation while waiting for results
  ☐ weed out non-links
-
+ ☐ parse out duplicate rendered items
+ ☐ refine Twitter return
 
  Start with User Authentication
  Get in data
