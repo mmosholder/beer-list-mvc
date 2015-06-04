@@ -150,7 +150,7 @@ var newFeed = function (location, onComplete) {
                             name: item.user.screen_name, 
                             created_time: parseTwitterDate(item.created_at),
                             photoUrl: item.user.profile_image_url,
-                            link: twitterUrl(str)
+                            link: twitterUrl(item.text)
                         });
                 });
                 onComplete(newTweets);
