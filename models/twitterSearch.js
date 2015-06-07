@@ -135,7 +135,7 @@ var newFeed = function (location, onComplete) {
             result_type: 'recent',
             count: 40
         }, function(error, tweets, response){
-            if(err) {
+            if(error) {
                 console.log('No results found');
             } else {
                 var newTweets = _.map(tweets.statuses, function (err, item) {

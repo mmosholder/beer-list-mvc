@@ -38,7 +38,8 @@ body {
     display: block;
     width: 33.3333%;
 }
-.nav>li>a:hover {
+.nav>li>a:hover,
+.nav>li>a:focus {
     background-color: rgba(123, 252, 207, 1);
     color: #666;
 }
