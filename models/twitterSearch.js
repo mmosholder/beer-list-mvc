@@ -78,7 +78,6 @@ var fbIds = function (location, query, onComplete) {
                     var idArr = _.map(itemArr, function (item) {
                         return ({id: item.id, name: item.name});
                     });
-                    console.log(idArr)
                     onComplete(null, idArr);
                 }
             };
@@ -136,16 +135,16 @@ var newFeed = function (location, onComplete) {
             count: 40
         }, function(error, tweets, response){
             if(error) {
-                console.log('No results found');
+                return console.log('No results found');
             } else {
                 var newTweets = _.map(tweets.statuses, function (err, item) {
-                    if (err) return (err);
+                    if (err) return console.log(err);
                     var parseTwitterDate = function (text) {
                         return new Date(Date.parse(text.replace(/( +)/, ' UTC$1')));
                     };
                     var twitterUrl = function (str) {
                         var exp = /https?:(.*)$/;
-                        return (exp.exec(str)[0]);
+                        return exp.exec(str)[0];
                     };
 
                     return ({message: item.text, 
