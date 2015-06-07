@@ -49,7 +49,7 @@ body {
 .header-container h1 {
     margin: 0;
     font-family: 'Dosis', sans-serif;
-    margin-top: 0;
+    margin-top: -7px;
     color: #000;
     display: inline-block;
     -webkit-font-smoothing: antialiased;
@@ -67,7 +67,7 @@ body {
 .beer-icon {
     width: 30px;
     display: inline-block;
-    margin: -1px 5px 0 5px;
+    margin: -5px 5px 0 5px;
 
 }
 .header-container .fa {
@@ -78,11 +78,11 @@ body {
 }
 .header-container li > a {
     color: #333;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
     padding: 0;
     display: block;
-    line-height: 55px;
+    line-height: 60px;
 }
 /************************************
 Content Classes
