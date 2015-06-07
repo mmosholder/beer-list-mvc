@@ -62,9 +62,8 @@ var fbIds = function (location, query, onComplete) {
         if (success) console.log(success);
         var location = locations.y + ',' + locations.x;
                 
-        graph.search({q: query, type: 'place', center: location, distance: '10000'}, function(err, res) {
+        graph.search({q: query, type: 'place', center: location, distance: '5000', limit: 25}, function(err, res) {
             if (err) return onComplete(err);
-
             var itemArr = [];
 
             var searchResults = function (err, res) {
@@ -72,12 +71,14 @@ var fbIds = function (location, query, onComplete) {
                 // needs to save data, and check if 'next' exists
                 itemArr = itemArr.concat(res.data);
 
+
                 if(res.paging.next) {
                     graph.get(res.paging.next, searchResults);
                 } else {
                     var idArr = _.map(itemArr, function (item) {
                         return ({id: item.id, name: item.name});
                     });
+                    console.log(idArr)
                     onComplete(null, idArr);
                 }
             };
@@ -134,27 +135,27 @@ var newFeed = function (location, onComplete) {
             result_type: 'recent',
             count: 40
         }, function(error, tweets, response){
-            if(tweets.length) {
+            if(err) {
                 console.log('No results found');
             } else {
-                var newTweets = _.map(tweets.statuses, function (item) {
+                var newTweets = _.map(tweets.statuses, function (err, item) {
+                    if (err) return (err);
                     var parseTwitterDate = function (text) {
                         return new Date(Date.parse(text.replace(/( +)/, ' UTC$1')));
                     };
-                    // var twitterUrl = function (str) {
-                    //     var exp = /https?:(.*)$/;
-                    //     return (exp.exec(str)[0]);
-                    // };
+                    var twitterUrl = function (str) {
+                        var exp = /https?:(.*)$/;
+                        return (exp.exec(str)[0]);
+                    };
 
                     return ({message: item.text, 
                             name: item.user.screen_name, 
                             created_time: parseTwitterDate(item.created_at),
-                            photoUrl: item.user.profile_image_url
-                            // link: twitterUrl(item.text)
+                            photoUrl: item.user.profile_image_url,
+                            link: twitterUrl(item.text)
                         });
                 });
                 onComplete(newTweets);
-                console.log(newTweets);
             }
         });
     });

@@ -65,13 +65,13 @@ var apiController = {
                     //             onComplete(null, posts);
                     //         });
                     //     });
-                    // }, 
+                    // } 
                     function (onComplete) {
-                        newFeed.fbItems(req.query.location, '"brewing"', function (err, ids) {
-                            if (err) return console.log(err);
+                        newFeed.fbItems(req.query.location, 'brewing', function (err, ids) {
+                            if (err) return onComplete(err);
                             // perform next level function on results before sending
                             newFeed.fbPosts(ids, function (err, posts){
-                                if (err) return console.log(err);
+                                if (err) return onComplete(err);
                                 onComplete(null, posts);
                             });
                         });
@@ -81,6 +81,7 @@ var apiController = {
                 });
             }
         ], function (err, results) {
+            if (err) res.send(err);
             res.send(_.flatten(results));
         });
     }     
