@@ -77,11 +77,12 @@ var apiController = {
                         });
                     }
                 ], function (err, results) {
+                    if (err) return console.log(err);
                     onComplete(err, _.flatten(results));
                 });
             }
         ], function (err, results) {
-            if (err) res.send(err);
+            if (err) console.log(err);
             res.send(_.flatten(results));
         });
     }     

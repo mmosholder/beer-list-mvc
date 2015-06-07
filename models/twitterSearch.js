@@ -59,7 +59,6 @@ graph.setAccessToken(keys.graph_access_token);
 
 var fbIds = function (location, query, onComplete) {
     geocoder.geocode(location, function (success, locations) {
-        if (success) console.log(success);
         var location = locations.y + ',' + locations.x;
                 
         graph.search({q: query, type: 'place', center: location, distance: '5000', limit: 25}, function(err, res) {
@@ -130,32 +129,28 @@ var newFeed = function (location, onComplete) {
         T.get('search/tweets', {
             q: '"new beer" OR "now brewing" OR "just tapped" OR "on tap" OR "craft beer" OR "tap room" OR "beer tasting" -Untappd', 
             geocode: location, 
-            since: '603547097942523900',
             result_type: 'recent',
             count: 40
         }, function(error, tweets, response){
-            if(error) {
-                return console.log('No results found');
-            } else {
-                var newTweets = _.map(tweets.statuses, function (err, item) {
-                    if (err) return console.log(err);
-                    var parseTwitterDate = function (text) {
-                        return new Date(Date.parse(text.replace(/( +)/, ' UTC$1')));
-                    };
-                    var twitterUrl = function (str) {
-                        var exp = /https?:(.*)$/;
-                        return exp.exec(str)[0];
-                    };
-
-                    return ({message: item.text, 
-                            name: item.user.screen_name, 
-                            created_time: parseTwitterDate(item.created_at),
-                            photoUrl: item.user.profile_image_url,
-                            link: twitterUrl(item.text)
-                        });
-                });
-                onComplete(newTweets);
-            }
+            if(error) return (error);
+            var newTweets = _.map(tweets.statuses, function (err, item) {
+                console.log(item.text);
+                if (err) return (err);
+                var parseTwitterDate = function (text) {
+                    return new Date(Date.parse(text.replace(/( +)/, ' UTC$1')));
+                };
+                // var twitterUrl = function (str) {
+                //     var exp = /https?:(.*)$/;
+                //     return (exp.exec(str)[0]);
+                // };
+                return ({message: item.text, 
+                        name: item.user.screen_name, 
+                        created_time: parseTwitterDate(item.created_at),
+                        photoUrl: item.user.profile_image_url
+                        // link: twitterUrl(item.text)
+                    });
+            });
+            onComplete(newTweets);
         });
     });
 };
