@@ -133,9 +133,7 @@ var newFeed = function (location, onComplete) {
             count: 40
         }, function(error, tweets, response){
             if(error) console.log(error);
-            var newTweets = _.map(tweets.statuses, function (err, item) {
-                console.log(item.text);
-                if (err) console.log(err);
+            var newTweets = _.map(tweets.statuses, function (item) {
                 var parseTwitterDate = function (text) {
                     return new Date(Date.parse(text.replace(/( +)/, ' UTC$1')));
                 };

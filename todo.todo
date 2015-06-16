@@ -33,7 +33,7 @@
  ☐ appropriately handle and display errors for failed search, restart server if crashed
  ☐ on log in post, pws are being sent as plain text
  ☐ log in post show success and redirect
- ☐
+ ☐ retina favicon
 
  Start with User Authentication
  Get in data
