@@ -8,7 +8,8 @@ block content
                 img(ng-src='{{post.photoUrl}}')
             .col-xs-12.col-sm-11
                 h4 {{post.name}}
-                p: a(href="{{post.link}}" target="_blank") {{post.message}}
+                p {{post.message}}
+                a(href="{{post.link}}" target="_blank") View post
                 p.time {{post.created_time | date:'d MMM yyyy'}}
     .info-container.row(ng-show="initialLoadContent")
         .col-xs-12.col-sm-6.text-center
